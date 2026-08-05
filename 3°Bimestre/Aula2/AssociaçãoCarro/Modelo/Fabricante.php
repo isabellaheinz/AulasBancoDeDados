@@ -10,8 +10,6 @@ class Fabricante {
         return $dados;
     }
 
-    
-
     public function getNome(): string
     {
         return $this->nome;
