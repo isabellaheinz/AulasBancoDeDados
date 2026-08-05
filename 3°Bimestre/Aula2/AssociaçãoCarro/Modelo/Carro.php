@@ -13,8 +13,6 @@ class Carro {
         return $dados;
     }
 
-    
-
     public function getModelo(): string
     {
         return $this->modelo;
