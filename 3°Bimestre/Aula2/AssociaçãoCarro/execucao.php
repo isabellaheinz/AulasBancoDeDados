@@ -37,9 +37,9 @@ function Vincular($sigla, $fabricantes){
         return false;
     }
 
-    
-
 }
+
+$carros = array();
 
 do {
 
@@ -59,23 +59,42 @@ do {
             echo "VW - Volkswagem.\nGM - Chevrolet.\nF - Fiat.\nRN - Renault. \n";
             $sigla = readline("");
             $carro->setFabricante(Vincular($sigla, $fabricantes));
-            echo "Carro cadastrado com sucesso.\n";
+
+            if (Vincular($sigla, $fabricantes) == false) {
+                echo "Não foi possivel cadastrar o carro. Tente novamente.";
+            } else {
+                echo "Carro cadastrado com sucesso!\n";
+                array_push($carros, $carro);
+            }
+            
             break;
 
         case 2:
-            $quantItens = count($fabricantes);
+            $quantItens = count($carros);
             $indiceRemocao = readline("Informe o índice do carro que deseja remover: ");
 
             if ($indiceRemocao < $quantItens) {
-                array_splice($fabricantes, $indiceRemocao, 1);
+                array_splice($carros, $indiceRemocao, 1);
                 echo "Remoção concluída com sucesso! \n";
             } else {
                 echo "Indice não disponível.\n";
             }
             break;
+
+        case 3:
+            echo "Listando carros:\n\n";
+            foreach ($carros as $car) {
+                echo $car;
+                echo "\n";
+                
+            }
+            break;
+
+        case 0:
+            break;
         
         default:
-            
+            echo "Opção inválida. Tente novamente.\n";
             break;
     }
 
